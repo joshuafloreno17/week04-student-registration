@@ -69,3 +69,40 @@ The system uses Laravel server-side validation to ensure that student informatio
 ### Importance of Validation
 
 Server-side validation prevents invalid or incomplete data from being stored in the database. It also provides an additional layer of security because validation is performed by the Laravel application before processing the submitted information.
+
+
+## Laravel Request Lifecycle
+
+The registration request follows the Laravel request lifecycle from the user's browser to the database and back to the browser.
+
+### Request Flow
+
+1. **Browser** – The user opens the student registration form and enters the required information.
+2. **Route** – The request is received by the appropriate route in `routes/web.php`.
+3. **Controller** – `StudentController` receives and processes the request.
+4. **Validation** – Laravel checks the submitted data using the defined validation rules.
+5. **File Upload** – The profile picture is uploaded to Laravel's public storage.
+6. **Model** – The `Student` model handles the student data.
+7. **Database** – The validated student information is stored in the MySQL `students` table.
+8. **Response** – Laravel redirects the user to the student records or profile page and displays a success message.
+
+### Simple Lifecycle Diagram
+
+```text
+Browser
+   ↓
+Route (web.php)
+   ↓
+StudentController
+   ↓
+Validation
+   ↓
+File Upload
+   ↓
+Student Model
+   ↓
+MySQL Database
+   ↓
+Response
+   ↓
+Student Profile / Success Message
